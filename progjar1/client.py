@@ -4,28 +4,27 @@ import socket
 # Create a TCP/IP socket
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-i = 2
-servers = ["192.168.122.156", "192.168.122.105"]
+serv_port = [5000, 5002]
 
 # Connect the socket to the port where the server is listening
 for i in range(2):
-    server_address = (servers[i], 10000)
+    server_address = ('192.168.164.128', serv_port[i])
     print(f"connecting to {server_address}")
     sock.connect(server_address)
 
 
-try:
-    # Send data
-    message = 'INI ADALAH DATA YANG DIKIRIM ABCDEFGHIJKLMNOPQ'
-    print(f"sending {message}")
-    sock.sendall(message.encode())
-    # Look for the response
-    amount_received = 0
-    amount_expected = len(message)
-    while amount_received < amount_expected:
-        data = sock.recv(16)
-        amount_received += len(data)
-        print(f"{data}")
-finally:
-    print("closing")
-    sock.close()
+    try:
+        # Send data
+        message = 'INI ADALAH DATA YANG DIKIRIM ABCDEFGHIJKLMNOPQ'
+        print(f"sending {message}")
+        sock.sendall(message.encode())
+        # Look for the response
+        amount_received = 0
+        amount_expected = len(message)
+        while amount_received < amount_expected:
+            data = sock.recv(16)
+            amount_received += len(data)
+            print(f"{data}")
+    finally:
+        print("closing")
+        sock.close()
