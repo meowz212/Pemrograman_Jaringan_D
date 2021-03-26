@@ -14,7 +14,6 @@ for i in range(2):
     print(f"connecting to {server_address}")
     sock.connect(server_address)
 
-
     try:
         # Send data
         message = 'INI ADALAH DATA YANG DIKIRIM ABCDEFGHIJKLMNOPQ'
@@ -23,7 +22,8 @@ for i in range(2):
         # Look for the response
         amount_received = 0
         amount_expected = len(message)
-        while amount_received < amount_expected:
+        # Extra 12 expected amounts for IAC Commands
+        while amount_received < (amount_expected + 6):
             data = sock.recv(16)
             amount_received += len(data)
             print(f"{data}")
