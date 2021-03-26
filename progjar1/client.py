@@ -1,13 +1,15 @@
 import sys
 import socket
 
-# Create a TCP/IP socket
-sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 serv_port = [5000, 5002]
 
-# Connect the socket to the port where the server is listening
+
 for i in range(2):
+    # Create a TCP/IP socket
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+    # Connect the socket to the port where the server is listening
     server_address = ('192.168.164.128', serv_port[i])
     print(f"connecting to {server_address}")
     sock.connect(server_address)
@@ -25,6 +27,7 @@ for i in range(2):
             data = sock.recv(16)
             amount_received += len(data)
             print(f"{data}")
+
     finally:
         print("closing")
         sock.close()
