@@ -23,7 +23,7 @@ for i in range(2):
         amount_received = 0
         amount_expected = len(message)
         # Extra 12 expected amounts for IAC Commands
-        while amount_received < (amount_expected + 6):
+        while amount_received < (amount_expected + 12):
             data = sock.recv(16)
             amount_received += len(data)
             print(f"{data}")
