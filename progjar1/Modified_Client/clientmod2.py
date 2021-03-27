@@ -1,7 +1,5 @@
 import sys
 import socket
-import string
-import random
 import os.path
 import base64
 
@@ -22,11 +20,10 @@ for i in range(2):
         image = 'tes.png'
         message = os.path.getsize(image)
 
-
-        # Send data
+        # Send Data
         print(f"sending {message} Bytes of Data")
         with open(image, 'rb') as f:
-            l  = base64.b64encode(f.read())
+            l = base64.b64encode(f.read())
             sock.sendall(l)
             f.close()
 
@@ -43,11 +40,11 @@ for i in range(2):
         # print(f"{amount_received}")
         f2.close()
 
-        #Open the encrypted file
+        # Open the encrypted file
         with open('encrypted' + str(i) + '.png', 'rb') as f:
             l = base64.b64decode(f.read())
 
-        #Encode the encryted Base64 Image
+        # Encode the encrypted Base64 Image
         with open(name + "_" + str(i) + ".png", 'wb') as f2:
             f2.write(l)
             f2.close()

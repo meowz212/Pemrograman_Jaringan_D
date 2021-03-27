@@ -18,6 +18,7 @@ for i in range(2):
 
     try:
         loopnum = 2097152
+
         # Send data
         message = ''.join(random.choice(string.ascii_lowercase) for x in range(loopnum))
 
@@ -27,7 +28,7 @@ for i in range(2):
         # Look for the response
         amount_received = 0
         amount_expected = len(message)
-        while amount_received < (amount_expected + 12) :
+        while amount_received < (amount_expected + 12):
             data = sock.recv(16)
             amount_received += len(data)
 
