@@ -44,7 +44,7 @@ for i in range(2):
         with open('encrypted' + str(i) + '.png', 'rb') as f:
             l = base64.b64decode(f.read())
 
-        # Encode the encrypted Base64 Image
+        # Decode the encrypted Base64 Image
         with open(name + "_" + str(i) + ".png", 'wb') as f2:
             f2.write(l)
             f2.close()
