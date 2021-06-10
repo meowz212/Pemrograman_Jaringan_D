@@ -51,7 +51,7 @@ class Server(threading.Thread):
 
 
 def main():
-    svr = Server(ipaddress='192.168.122.65',port=6666)
+    svr = Server(ipaddress='192.168.122.233',port=6666)
     svr.start()
 
 
