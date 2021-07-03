@@ -1,9 +1,10 @@
 import socket
 
-UDP_IP_ADDRESS = ''
+UDP_IP_ADDRESS = '0.0.0.0'
 UDP_PORT = 8888
 
 serverSock = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
+
 serverSock.bind(((UDP_IP_ADDRESS,UDP_PORT)))
 
 filename = 'tesfinished.jpg'

@@ -8,10 +8,9 @@ import socket
 
 def get_destination():
     dest = dict()
-    dest['ip1'] = '255.255.255.255'
-    # dest['ip2'] = ''
+    dest['ip1'] = '192.168.122.110'
+    dest['ip2'] = '192.168.122.120'
     return dest
-
 
 def send_image(IP_ADDRESS):
     sckclient = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
