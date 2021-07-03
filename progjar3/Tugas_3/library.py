@@ -8,7 +8,7 @@ import socket
 
 def get_destination():
     dest = dict()
-    dest['ip1'] = '127.0.0.1'
+    dest['ip1'] = '255.255.255.255'
     # dest['ip2'] = ''
     return dest
 
