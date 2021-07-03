@@ -6,7 +6,7 @@ UDP_PORT = 8888
 serverSock = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
 serverSock.bind(((UDP_IP_ADDRESS,UDP_PORT)))
 
-filename = 'tesfinished.png'
+filename = 'tesfinished.jpg'
 fp = open(filename,'wb+')
 count = 0
 
