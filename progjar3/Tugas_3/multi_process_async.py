@@ -5,17 +5,17 @@ from multiprocessing import Process, Pool
 
 def send():
     texec = dict()
-    urls = get_destination()
+    ips = get_destination()
     status_task = dict()
     task_pool = Pool(processes=20) #2 task yang dapat dikerjakan secara simultan, dapat diset sesuai jumlah core
     catat_awal = datetime.datetime.now()
-    for k in urls:
-        print(f"mendownload {urls[k]}")
+    for k in ips:
+        print(f"mendownload {ips[k]}")
         #bagian ini merupakan bagian yang mengistruksikan eksekusi fungsi download gambar secara multiprocess
-        texec[k] = task_pool.apply_async(func=send_image, args=(urls[k],))
+        texec[k] = task_pool.apply_async(func=send_image, args=(ips[k],))
 
     #setelah menyelesaikan tugasnya, dikembalikan ke main process dengan mengambil hasilnya dengan get
-    for k in urls:
+    for k in ips:
         status_task[k]=texec[k].get(timeout=10)
 
     catat_akhir = datetime.datetime.now()

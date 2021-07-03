@@ -5,18 +5,18 @@ import concurrent.futures
 
 def send():
     texec = dict()
-    urls = get_destination()
+    ips = get_destination()
     status_task = dict()
     task = concurrent.futures.ThreadPoolExecutor(max_workers=4)
     catat_awal = datetime.datetime.now()
-    for k in urls:
-        print(f"mendownload {urls[k]}")
+    for k in ips:
+        print(f"mendownload {ips[k]}")
         waktu = time.time()
         #bagian ini merupakan bagian yang mengistruksikan eksekusi fungsi download gambar secara multithread
-        texec[k] = task.submit(send_image, urls[k])
+        texec[k] = task.submit(send_image, ips[k])
 
     #setelah menyelesaikan tugasnya, dikembalikan ke main thread dengan memanggil result
-    for k in urls:
+    for k in ips:
         status_task[k]=texec[k].result()
 
     catat_akhir = datetime.datetime.now()

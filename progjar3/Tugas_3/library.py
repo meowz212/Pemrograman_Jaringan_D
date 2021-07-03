@@ -8,24 +8,23 @@ import socket
 
 def get_destination():
     dest = dict()
-    dest['ip1'] = ''
-    dest['ip2'] = ''
-    dest['ip3'] = ''
+    dest['ip1'] = '127.0.0.1'
+    # dest['ip2'] = ''
     return dest
 
 
 def send_image(IP_ADDRESS):
     sckclient = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    server_address = (IP_ADDRESS, 5050)
-    print(f"connecting to {server_address}")
-    sckclient.connect(server_address)
-
-    image = 'tes.png'
-    message = os.path.getsize(image)
 
     # Send Data
-    print(f"sending {message} Bytes of Data")
-    with open(image, 'rb') as f:
-        l = base64.b64encode(f.read())
-        sckclient.sendall(l)
-        f.close()
+    namafile = "tes.jpg"
+    ukuran = os.stat(namafile).st_size
+
+    fp = open(namafile, 'rb')
+    k = fp.read()
+    terkirim = 0
+    for x in k:
+        k_bytes = bytes([x])
+        sckclient.sendto(k_bytes, (IP_ADDRESS, 8888))
+        terkirim = terkirim + 1
+        print(k_bytes,f"terkirim {terkirim} of {ukuran} ")
